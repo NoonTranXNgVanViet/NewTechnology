@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tool OB48 Công nghệ 5.0 - By Noontran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0e001d;
+      color: #fff;
+      background-image: radial-gradient(circle at center, #300030, #0e001d);
+      animation: pulseBg 5s infinite;
+    }
+    @keyframes pulseBg {
+      0%, 100% { background-color: #0e001d; }
+      50% { background-color: #1a0033; }
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(60, 0, 90, 0.97);
+      border-radius: 20px;
+      box-shadow: 0 0 40px #ff00ff;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff00f7;
+      text-shadow: 0 0 20px #ff00f7;
+    }
+    input, button {
+      padding: 12px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.1em;
+    }
+    button {
+      background: #ff00f0;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #c500c0;
+    }
+    .function, .fileSelect {
+      margin: 10px 0;
+      background: #1e0033;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .function:hover, .fileSelect:hover {
+      background: #3b0055;
+      transform: scale(1.02);
+    }
+    #statusBar {
+      margin-top: 15px;
+      height: 20px;
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none;
+    }
+    #progress {
+      height: 100%;
+      width: 0;
+      background: #00ffcc;
+      animation: installProgress 5s forwards;
+    }
+    @keyframes installProgress {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Tool OB48 - Công nghệ 5.0</h1>
+
+  <div id="loginBox">
+    <input type="text" id="username" placeholder="Tài khoản">
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <button onclick="login()">Đăng nhập</button>
+  </div>
+
+  <div id="toolBox" style="display:none;">
+    <p id="uuidDisplay"></p>
+    <p id="timeDisplay"></p>
+    <p id="deviceInfo"></p>
+
+    <h2>Chọn File Công Nghệ 5.0</h2>
+    <div class="fileSelect"><input type="file" id="file1"> AI Boost Accelerator</div>
+    <div class="fileSelect"><input type="file" id="file2"> Smart Root Authority</div>
+    <div class="fileSelect"><input type="file" id="file3"> 5D Anti-Lag System</div>
+    <div class="fileSelect"><input type="file" id="file4"> Advanced JS Shield</div>
+
+    <button onclick="simulateInstall()">Cài đặt ngay</button>
+    <div id="statusBar"><div id="progress"></div></div>
+
+    <h2>Chức năng Free Fire OB48</h2>
+    <div class="function" onclick="playSound('ROOT System')">ROOT System</div>
+    <div class="function" onclick="playSound('Boost CPU/GPU')">Boost CPU/GPU</div>
+    <div class="function" onclick="playSound('Anti-Debug & Ban')">Anti-Debug & Ban</div>
+    <div class="function" onclick="playSound('Fix All OB48')">Fix All OB48</div>
+
+    <p id="dpiValue">DPI: 400</p>
+    <input type="range" min="100" max="1000" value="400" oninput="updateDPI(this.value)">
+  </div>
+
+  <footer>© 2025 Tool by Noontranmakeconfig</footer>
+</div>
+
+<audio id="sound" src="https://cdn.pixabay.com/download/audio/2022/10/19/audio_9fa8f3fdaa.mp3"></audio>
+
+<script>
+function login() {
+  const u = document.getElementById("username").value;
+  const p = document.getElementById("password").value;
+  if (u === "noontranmakeconfig" && p === "04102007") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("toolBox").style.display = "block";
+    showInfo();
+  } else {
+    alert("Sai tài khoản hoặc mật khẩu!");
+  }
+}
+
+function showInfo() {
+  document.getElementById("uuidDisplay").innerText = "UUID: " + crypto.randomUUID();
+  document.getElementById("timeDisplay").innerText = "Thời gian: " + new Date().toLocaleString();
+  document.getElementById("deviceInfo").innerText = "Thiết bị: " + navigator.userAgent;
+}
+
+function updateDPI(val) {
+  document.getElementById("dpiValue").innerText = "DPI: " + val;
+}
+
+function playSound(name) {
+  const audio = document.getElementById("sound");
+  audio.play();
+  alert("Đã kích hoạt: " + name);
+}
+
+function simulateInstall() {
+  const status = document.getElementById("statusBar");
+  const progress = document.getElementById("progress");
+  progress.style.width = "0";
+  status.style.display = "block";
+  progress.style.animation = "installProgress 5s forwards";
+  setTimeout(() => {
+    alert("Cài đặt hoàn tất! Công nghệ 5.0 đã được kích hoạt.");
+    status.style.display = "none";
+  }, 5200);
+}
+</script>
+</body>
+</html>
